@@ -99,6 +99,10 @@ table tr td:last-child {
     z-index: 1;
 }
 
+.position-relativ{
+    position: relative;
+}
+
 
 
 .make-diagonal{
