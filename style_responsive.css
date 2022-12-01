@@ -1,0 +1,88 @@
+/* Just for smartpones*/
+@media(max-width: 470px) {
+    .hide-mobil {
+        display: none;
+    }
+
+    .table-div{
+        /*width: 270px;*/
+        
+    }
+    .player-panel {
+        display: unset;
+    }
+
+    td {
+        width: 80px;
+        height: 80px;
+    }
+
+    .shape {
+        width: 70px;
+        height: 70px;
+        top: 6px;
+        left: 6px;
+    }
+
+    .restart-btn {
+        top: 150px;
+        left: 3px;
+    }
+
+    .vertikal-line {
+        display: none;
+    }
+
+    .horizontal-line {
+        display: none;
+    }
+}
+
+@media(max-height: 430px) {
+    .hide-mobil {
+        display: none;
+    }
+
+
+
+    td {
+        width: 80px;
+        height: 80px;
+    }
+
+    .shape {
+        width: 70px;
+        height: 70px;
+        top: 6px;
+        left: 6px;
+    }
+
+    .restart-btn {
+        top: 150px;
+        left: 3px;
+    }
+
+    .vertikal-line {
+        display: none;
+    }
+
+    .horizontal-line {
+        display: none;
+    }
+
+    .game-over {
+        height: 100%;
+    }
+}
+
+@media(max-height: 282px) {
+    .hide-mobil {
+        display: none;
+    }
+
+
+
+  .player-panel{
+    display: none;
+  }
+}

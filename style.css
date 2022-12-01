@@ -148,3 +148,7 @@ table tr td:last-child {
 body  button:hover{
     background-color: #e7c5c5;
 }
+
+.table-div{
+    width: 100%;
+}

@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicTacToe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_responsive.css">
     <script src="script.js"></script>
 </head>
 
 <body>
     <img id="end-screen" class="game-over d-none" src="./img/game-over-new.jpg">
-    
+
     <div class="player-panel">
         <div id="player-1">
             <img src="./img/circle.png"> Player 1
@@ -33,12 +34,11 @@
         <div id="line-5" class="vertikal-line" style="right: -106px; top:201px;">
         </div>
 
-        <div id="line-6" class="horizontal-line make-diagonal"
-            style="top: 201px; left: 7px;">
+        <div id="line-6" class="horizontal-line make-diagonal" style="top: 201px; left: 7px;">
         </div>
-        <div id="line-7" class="horizontal-line make-diagonalminus"
-            style="top: 201px; left: 7px;"></div>
+        <div id="line-7" class="horizontal-line make-diagonalminus" style="top: 201px; left: 7px;"></div>
 
+        <div class="table-div">
         <table>
             <tr>
                 <td onclick="fillshape(0)">
@@ -83,6 +83,7 @@
                 </td>
             </tr>
         </table>
+    </div>
     </div>
 
 </body>

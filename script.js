@@ -5,29 +5,31 @@ let currentShape = 'cross'
 
 function fillshape(id) {
     if (!fields[id] && !gameOver) {
-
-        if (currentShape == 'cross') {
-            currentShape = 'circle';
-            document.getElementById('player-2').classList.remove('player-inactive');
-            document.getElementById('player-1').classList.add('player-inactive');
-        } else {
-            currentShape = 'cross';
-            document.getElementById('player-1').classList.remove('player-inactive');
-            document.getElementById('player-2').classList.add('player-inactive');
-        }
-
-
+        switchPlayers();
         fields[id] = currentShape;
         draw();
-        checkForWin()
+        checkForWin();
     }
 }
+
+function switchPlayers(){
+    if (currentShape == 'cross') {
+        currentShape = 'circle';
+       document.getElementById('player-2').classList.remove('player-inactive');
+       document.getElementById('player-1').classList.add('player-inactive');
+    } else {
+        currentShape = 'cross';
+        document.getElementById('player-1').classList.remove('player-inactive');
+        document.getElementById('player-2').classList.add('player-inactive');
+    }
+}
+
+
 
 function draw() {
     for (let i = 0; i < fields.length; i++) {
         if (fields[i] == 'circle') {
             document.getElementById('circle-' + i).classList.remove('d-none');
-
         }
 
         if (fields[i] == 'cross') {
@@ -49,6 +51,7 @@ function checkDrawAtGame(winner){
         fields[6] && fields[7] && fields[8] && fields[2] && fields[0]) {
         winner = fields[0];
     }
+
     win(winner);
 }
 
@@ -60,65 +63,32 @@ function win(winner) {
         setTimeout(function () {
             document.getElementById('end-screen').classList.remove('d-none');
             document.getElementById('restart-btn').classList.remove('d-none')
-        }, 2500);
-        
+        }, 1500);
     }
 }
 
 function checkHorizontalWins(winner) {
-    if (fields[0] == fields[1] && fields[1] == fields[2] && fields[0]) {
-        winner = fields[0];
-        document.getElementById('line-0').classList.remove('d-none');
-        document.getElementById('line-0').style.transform = 'scaleX(1)';
-    }
-
-    if (fields[3] == fields[4] && fields[4] == fields[5] && fields[3]) {
-        winner = fields[3];
-        document.getElementById('line-1').classList.remove('d-none');
-        document.getElementById('line-1').style.transform = 'scaleX(1)';
-    }
-
-    if (fields[6] == fields[7] && fields[7] == fields[8] && fields[6]) {
-        winner = fields[6];
-        document.getElementById('line-2').classList.remove('d-none');
-        document.getElementById('line-2').style.transform = 'scaleX(1)';
-    }
-
-    win(winner);
+    checkWin(0, 1, 2, 0, 'scaleX(1)', winner);
+    checkWin(3, 4, 5, 1, 'scaleX(1)', winner);
+    checkWin(6, 7, 8, 2, 'scaleX(1)', winner);
 }
 
 function checkVerticalWins(winner) {
-    if (fields[0] == fields[3] && fields[3] == fields[6] && fields[0]) {
-        winner = fields[0];
-        document.getElementById('line-3').classList.remove('d-none');
-        document.getElementById('line-3').style.transform = 'rotate(90deg) scaleX(1)';
-    }
-
-    if (fields[1] == fields[4] && fields[4] == fields[7] && fields[1]) {
-        winner = fields[1];
-        document.getElementById('line-4').classList.remove('d-none');
-        document.getElementById('line-4').style.transform = 'rotate(90deg) scaleX(1)';
-    }
-
-    if (fields[2] == fields[5] && fields[5] == fields[8] && fields[2]) {
-        winner = fields[2];
-        document.getElementById('line-5').classList.remove('d-none');
-        document.getElementById('line-5').style.transform = 'rotate(90deg) scaleX(1)';
-    }
-
-    win(winner);
+    checkWin(0, 3, 6, 3, 'rotate(90deg) scaleX(1)', winner);
+    checkWin(1, 4, 7, 4, 'rotate(90deg) scaleX(1)', winner);
+    checkWin(2, 5, 8, 5, 'rotate(90deg) scaleX(1)', winner);
 }
 
 function checkDiagonalWins(winner) {
-    if (fields[0] == fields[4] && fields[4] == fields[8] && fields[0]) {
-        winner = fields[0];
-        document.getElementById('line-6').classList.remove('d-none');
-        document.getElementById('line-6').style.transform = 'rotate(45deg) scaleX(1)';
-    }
-    if (fields[2] == fields[4] && fields[4] == fields[6] && fields[2]) {
-        winner = fields[2];
-        document.getElementById('line-7').classList.remove('d-none');
-        document.getElementById('line-7').style.transform = 'rotate(-45deg) scaleX(1)';
+    checkWin(0, 4, 8, 6, 'rotate(45deg) scaleX(1)', winner);
+    checkWin(2, 4, 6, 7, 'rotate(-45deg) scaleX(1)', winner);
+}
+
+function checkWin(field1, field2, field3, id, style, winner){
+    if (fields[field1] == fields[field2] && fields[field2] == fields[field3] && fields[field1]) {
+        winner = fields[field1];
+        document.getElementById('line-' +id).classList.remove('d-none');
+        document.getElementById('line-' +id).style.transform = style;
     }
     win(winner);
 }
@@ -126,11 +96,17 @@ function checkDiagonalWins(winner) {
 
 function restart() {
     gameOver = false;
-    document.getElementById('end-screen').classList.add('d-none');
-    document.getElementById('restart-btn').classList.add('d-none');
+    
     fields = [];
     fillshape();
 
+    hideForRestart();
+
+}
+
+function hideForRestart(){
+    document.getElementById('end-screen').classList.add('d-none');
+    document.getElementById('restart-btn').classList.add('d-none');
     for (let i = 0; i < 8; i++) {
         document.getElementById('line-' + i).classList.add('d-none');
     }
