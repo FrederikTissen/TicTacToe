@@ -12,7 +12,7 @@
 
 <body>
     <img id="end-screen" class="game-over d-none" src="./img/game-over-new.jpg">
-    <button onclick="restart()" id="restart-btn" class="restart-btn d-none">Play Again!</button>
+    
     <div class="player-panel">
         <div id="player-1">
             <img src="./img/circle.png"> Player 1
@@ -23,6 +23,7 @@
     </div>
 
     <div class="position-relativ">
+        <button onclick="restart()" id="restart-btn" class="restart-btn d-none">Play Again!</button>
         <div id="line-0" class="horizontal-line" style="top: 61px; left: 31px"></div>
         <div id="line-1" class="horizontal-line" style="top: 200px; left: 30px"></div>
         <div id="line-2" class="horizontal-line" style="top: 340px; left: 31px"></div>
@@ -33,10 +34,10 @@
         </div>
 
         <div id="line-6" class="horizontal-line make-diagonal"
-            style="top: 201px; left: 7px; transform: rotate(45deg) scaleX(0.0);">
+            style="top: 201px; left: 7px;">
         </div>
         <div id="line-7" class="horizontal-line make-diagonalminus"
-            style="top: 201px; left: 6px; transform: rotate(-45deg) scaleX(0.0);"></div>
+            style="top: 201px; left: 7px;"></div>
 
         <table>
             <tr>

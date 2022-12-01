@@ -103,8 +103,6 @@ table tr td:last-child {
     position: relative;
 }
 
-
-
 .make-diagonal{
     width: 400px;
 }
@@ -142,7 +140,8 @@ table tr td:last-child {
     height: 70px;
     font-size: 40px;
     position: absolute;
-    top: 555px;
+    top: 310px;
+    left: 80px;
     cursor: pointer;
 }
 
